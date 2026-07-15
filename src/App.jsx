@@ -17,13 +17,13 @@ function App() {
     return (
         <div className="app">
 
-            <Header name="Het Gangani" />
+            <Header name="Vishva Patel" />
 
             <About />
 
             <Skills skillList={skills} />
 
-            <Footer email="hetgangani@example.com" />
+            <Footer email="vishvapatel1907@gmail.com" />
 
         </div>
     );
