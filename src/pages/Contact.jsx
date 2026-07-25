@@ -1,32 +1,59 @@
 import { useState } from "react";
 
 function Contact() {
+    const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [showHelp, setShowHelp] = useState(false);
 
     return (
         <section className="contact">
-            <h2>Contact Me</h2>
+            <h2>Get In Touch</h2>
 
-            <label>Message:</label>
-            <br />
+            <p className="subtitle">
+                Have a question or want to work together? Feel free to send me a message.
+            </p>
 
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Enter your message"
-            />
+            <div className="contact-form">
 
-            <p>You typed: {message}</p>
+                <label>Email Address</label>
 
-            <button onClick={() => setShowHelp(!showHelp)}>
-                {showHelp ? "Hide Help" : "Show Help"}
-            </button>
+                <input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-            {showHelp && (
-                <p>Please enter your message in the input box above.</p>
-            )}
+                <label>Message</label>
+
+                <textarea
+                    rows="6"
+                    placeholder="Write your message..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                />
+
+                <div className="button-group">
+                    <button className="send-btn">
+                        Send Message
+                    </button>
+
+                    <button
+                        className="help-btn"
+                        onClick={() => setShowHelp(!showHelp)}
+                    >
+                        {showHelp ? "Hide Help" : "Need Help?"}
+                    </button>
+                </div>
+
+                {showHelp && (
+                    <div className="help-box">
+                        Please enter your email address and your message,
+                        then click <strong>Send Message</strong>.
+                    </div>
+                )}
+
+            </div>
         </section>
     );
 }
