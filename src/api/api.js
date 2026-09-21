@@ -1,7 +1,18 @@
 const BASE_URL = "http://localhost:5000";
 
+const getAuthHeaders = () => {
+    const token = localStorage.getItem("token");
+
+    return {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+    };
+};
+
 export const getTasks = async () => {
-    const response = await fetch(`${BASE_URL}/tasks`);
+    const response = await fetch(`${BASE_URL}/tasks`, {
+        headers: getAuthHeaders()
+    });
 
     if (!response.ok) {
         throw new Error("Failed to fetch tasks");
@@ -13,9 +24,7 @@ export const getTasks = async () => {
 export const createTask = async (task) => {
     const response = await fetch(`${BASE_URL}/tasks`, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(task)
     });
 
@@ -31,9 +40,7 @@ export const createTask = async (task) => {
 export const updateTask = async (id, task) => {
     const response = await fetch(`${BASE_URL}/tasks/${id}`, {
         method: "PUT",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(task)
     });
 
@@ -48,7 +55,8 @@ export const updateTask = async (id, task) => {
 
 export const deleteTask = async (id) => {
     const response = await fetch(`${BASE_URL}/tasks/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: getAuthHeaders()
     });
 
     if (!response.ok) {
