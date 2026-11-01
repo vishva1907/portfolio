@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 function NavBar() {
@@ -12,6 +13,7 @@ function NavBar() {
                 <div className="nav-links">
                     <Link to="/">Home</Link>
                     <Link to="/projects">Projects</Link>
+                    <Link to="/tasks">Tasks</Link>
                     <Link to="/contact">Contact</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>

@@ -1,13 +1,14 @@
+
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import NavBar from "./components/NavBar";
-
 import Home from "./pages/Home";
 
 const Projects = lazy(() => import("./pages/Projects"));
+const Tasks = lazy(() => import("./pages/Tasks"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -26,10 +27,11 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Suspense>
     </div>
